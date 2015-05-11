@@ -224,10 +224,13 @@ public class MongoClientUtils {
                     log.error("mongodbclientutil save is error : ", e);
                 }
             }
-            FindIterable<? extends Object> find = collection.find(eq(primaryKey,primaryVal),objClass);
-            if (find != null) {
-                result = find.first();
+            FindIterable<Document> find = collection.find(eq(primaryKey,primaryVal));
+            ProdDesc prodDesc = new ProdDesc();
+            for (Document document : find) {
+                String string = document.getString("content");
+                prodDesc.setContent(string);
             }
+            result = prodDesc;
         }
         return result;
     }

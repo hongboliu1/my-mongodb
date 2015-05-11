@@ -40,7 +40,7 @@ public class ProdDescController {
         prodDesc.setCreateDate(Calendar.getInstance().getTime());
         prodDesc.setCreateBy(200L);
         prodDescService.save(prodDesc);
-        model.addAttribute("publishProdDesc","updatePredDesc");
+        model.addAttribute("doSomething","updatePredDesc");
         return "proddesc/success";
     }
     
@@ -55,4 +55,23 @@ public class ProdDescController {
         model.addAttribute("doSomething","updatePredDesc");
         return "proddesc/success";
     }
+    
+    @RequestMapping(value="/deleteProdDesc",method=RequestMethod.GET)
+    public String deleteProdDesc(HttpServletRequest request,HttpServletResponse response,Model model) {
+        ProdDesc prodDesc = new ProdDesc();
+        prodDesc.setId(10000L);
+        prodDescService.delete(prodDesc);
+        model.addAttribute("doSomething","deleteProdDesc");
+        return "proddesc/success";
+    }
+
+    
+    @RequestMapping(value="/findProdDesc",method=RequestMethod.GET)
+    public String findProdDesc(HttpServletRequest request,HttpServletResponse response,Model model) {
+        ProdDesc findById = prodDescService.findById(10000L);
+        System.out.println(findById.getContent());
+        model.addAttribute("doSomething","findProdDesc");
+        return "proddesc/success";
+    }
+    
 }

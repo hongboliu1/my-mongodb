@@ -37,4 +37,25 @@ public interface ProdDescService {
      *
      */
     long update(ProdDesc prodDesc);
+    
+    /**
+     * Description	： 这里记述method的说明<br>
+     * 
+     * liuhb
+     * @param prodDesc
+     * @return
+     * @since
+     *
+     */
+    long delete(ProdDesc prodDesc);
+    
+    /**
+     * Description	： findById <br>
+     * 
+     * liuhb
+     * @return
+     * @since
+     *
+     */
+    ProdDesc findById(Long id);
 }

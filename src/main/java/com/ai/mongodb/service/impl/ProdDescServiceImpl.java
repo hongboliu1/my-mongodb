@@ -34,4 +34,16 @@ public class ProdDescServiceImpl implements ProdDescService {
     public long update(ProdDesc prodDesc) {
         return mongoClientUtils.update(prodDesc); 
     }
+
+    @Override
+    public long delete(ProdDesc prodDesc) {
+        return mongoClientUtils.delete(prodDesc);
+    }
+
+    @Override
+    public ProdDesc findById(Long id) {
+        ProdDesc prodDesc = new ProdDesc();
+        prodDesc.setId(10000L);
+        return (ProdDesc)mongoClientUtils.findById(prodDesc);
+    }
 }
