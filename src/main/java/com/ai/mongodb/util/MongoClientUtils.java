@@ -227,6 +227,7 @@ public class MongoClientUtils {
             FindIterable<Document> find = collection.find(eq(primaryKey,primaryVal));
             ProdDesc prodDesc = new ProdDesc();
             for (Document document : find) {
+                System.out.println(document.toJson());
                 String string = document.getString("content");
                 prodDesc.setContent(string);
             }

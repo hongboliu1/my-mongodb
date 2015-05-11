@@ -76,7 +76,7 @@
 		<pinyin4j.version>2.5.0</pinyin4j.version>
 		<poi-ooxml.version>3.8</poi-ooxml.version>
 		<hibernate-validator.version>4.1.0.Final</hibernate-validator.version>
-		<junit.version>3.8.1</junit.version>
+		<junit.version>4.8.2</junit.version>
 		<aopalliance.version>1.0</aopalliance.version>
 		<aspectjweaver.version>1.8.0</aspectjweaver.version>
 		<apache-poi>3.10-FINAL</apache-poi>
@@ -133,6 +133,12 @@
 			<artifactId>com.springsource.org.aspectj.weaver</artifactId>
 			<version>${com.springsource.org.aspectj.weaver.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework.version}</version>
+			<scope>test</scope>
+		</dependency>			
 		<dependency>
 			<groupId>org.freemarker</groupId>
 			<artifactId>freemarker</artifactId>
@@ -330,9 +336,10 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${maven-surefire-plugin.version}</version>
 					<configuration>
+						<!-- 如果有这下面的配置，优化使用配置；否则通过命令行来控制。-DskipTests :不执行Junit。-->
 						<skip>false</skip>
-						<skipTests>false</skipTests>
-						<testFailureIgnore>false</testFailureIgnore>
+						<skipTests>true</skipTests>
+						<testFailureIgnore>true</testFailureIgnore>
 					</configuration>
 				</plugin>
 				<!-- 生成MD5文件 -->
@@ -402,8 +409,8 @@
 			<resource>
 				<directory>src/main/resources</directory>
 				<excludes>
+					<!-- 执行junit，需要dev环境
 					<exclude>config/dev/</exclude>
-					<!-- 
 					<exclude>config/prod/</exclude>
 					<exclude>config/test/</exclude>
 					 -->
